@@ -43,6 +43,12 @@
     }
   }
 
+  .error {
+    width: 30vw;
+    color: red;
+    font-size: 2rem;
+  }
+
   .list {
     display: flex;
     flex-direction: column;
