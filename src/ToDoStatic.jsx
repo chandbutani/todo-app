@@ -11,12 +11,12 @@ const ToDoStatic = () => {
   };
 
   const handleAdd = () => {
-    if (Task !== "") {
+    if (Task !== "" && Task !== "Please Enter valid Task") {
       setList([...list, Task]);
+      setTask("");
     } else {
       setTask("Please Enter valid Task");
     }
-    setTask("");
   };
 
   const handleEdit = (i) => {
