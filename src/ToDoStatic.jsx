@@ -24,16 +24,26 @@ const ToDoStatic = () => {
   const handleEdit = (i) => {
     setEdtId(i);
     setTask(list[i]);
+    const listCloneE = [...list];
+    listCloneE.splice(i, 1);
+    setList([...listCloneE]);
     setErr("");
   };
 
   const handleUpdate = () => {
     // setList(list.splice(EdtId, 1, Task));
-    const listCloneU = [...list];
-    listCloneU.splice(edtId, 1, task);
-    setList([...listCloneU]);
-    setEdtId("");
-    setTask("");
+    if (task !== "") {
+      // const listCloneU = [...list];
+      // listCloneU.splice(edtId, 1, task);
+      // setList([...listCloneU]);
+
+      const listCloneU = [...list.slice(0, edtId), task, ...list.slice(edtId)];
+      setList([...listCloneU]);
+      setEdtId("");
+      setTask("");
+    } else {
+      setErr("Updated Task should not be empty");
+    }
   };
 
   const handleDelet = (i) => {
