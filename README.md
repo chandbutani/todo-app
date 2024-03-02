@@ -4,4 +4,4 @@ This project was create with React in which the list of ToDo tasks added in stat
 
 # ToDo App Static deploy link
 
-()
+(https://chandbutani.github.io/todo-app/)
