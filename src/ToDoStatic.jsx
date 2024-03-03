@@ -9,30 +9,40 @@ const ToDoStatic = () => {
 
   const handleTask = (e) => {
     setTask(e);
-    setErr("");
+    if (list.includes(e)) {
+      setErr("Given Task is already added , So please add different Task");
+    } else {
+      setErr("");
+    }
   };
 
   const handleAdd = () => {
-    if (task !== "") {
+    if (task !== "" && !list.includes(task)) {
       setList([...list, task]);
       setTask("");
     } else {
-      setErr("Please Enter valid Task");
+      setErr("Please Enter valid and different Task");
     }
   };
 
   const handleEdit = (i) => {
-    setEdtId(i);
-    setTask(list[i]);
-    const listCloneE = [...list];
-    listCloneE.splice(i, 1);
-    setList([...listCloneE]);
-    setErr("");
+    if (edtId === "") {
+      setEdtId(i);
+      setTask(list[i]);
+      const listCloneE = [...list];
+      listCloneE.splice(i, 1);
+      setList([...listCloneE]);
+      setErr("");
+    } else {
+      setErr(
+        "Please update previous selected Task then select another Task to Edit "
+      );
+    }
   };
 
   const handleUpdate = () => {
     // setList(list.splice(EdtId, 1, Task));
-    if (task !== "") {
+    if (task !== "" && !list.includes(task)) {
       // const listCloneU = [...list];
       // listCloneU.splice(edtId, 1, task);
       // setList([...listCloneU]);
@@ -42,7 +52,7 @@ const ToDoStatic = () => {
       setEdtId("");
       setTask("");
     } else {
-      setErr("Updated Task should not be empty");
+      setErr("Please enter valid and Different task");
     }
   };
 
