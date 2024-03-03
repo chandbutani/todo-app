@@ -51,18 +51,22 @@ const ToDoStatic = () => {
       setList([...listCloneU]);
       setEdtId("");
       setTask("");
+      setErr("");
     } else {
       setErr("Please enter valid and Different task");
     }
   };
 
   const handleDelet = (i) => {
-    const listCloneD = [...list];
-    const deletItem = listCloneD.filter((_, index) => {
-      return i !== index;
-    });
-    setList(deletItem);
-    setErr("");
+    if (task === "") {
+      const listCloneD = [...list];
+      const deletItem = listCloneD.filter((_, index) => {
+        return i !== index;
+      });
+      setList(deletItem);
+    } else {
+      setErr("First complete the previous operation");
+    }
   };
 
   return (
